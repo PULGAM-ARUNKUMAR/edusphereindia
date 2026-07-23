@@ -1,6 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { GraduationCap, Search, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { lovable } from "@/integrations/lovable";
+import { supabase } from "@/integrations/supabase/client";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import {
   Sheet,
   SheetContent,
@@ -17,6 +21,32 @@ const navLinks = [
 ] as const;
 
 export function SiteHeader() {
+  const [email, setEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      setEmail(data.session?.user.email ?? null);
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+      setEmail(session?.user.email ?? null);
+    });
+    return () => sub.subscription.unsubscribe();
+  }, []);
+
+  const handleSignIn = async () => {
+    const result = await lovable.auth.signInWithOAuth("google", {
+      redirect_uri: window.location.origin,
+    });
+    if (result.error) {
+      toast.error("Sign in failed", { description: result.error.message });
+    }
+  };
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    toast.success("Signed out");
+  };
+
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4">
@@ -43,9 +73,15 @@ export function SiteHeader() {
               <Link to={l.to}>{l.label}</Link>
             </Button>
           ))}
-          <Button size="sm" className="ml-2">
-            Sign in
-          </Button>
+          {email ? (
+            <Button size="sm" variant="outline" className="ml-2" onClick={handleSignOut}>
+              Sign out
+            </Button>
+          ) : (
+            <Button size="sm" className="ml-2" onClick={handleSignIn}>
+              Sign in with Google
+            </Button>
+          )}
         </nav>
 
         <div className="ml-auto flex md:hidden items-center gap-2">
@@ -76,7 +112,15 @@ export function SiteHeader() {
                     {l.label}
                   </Link>
                 ))}
-                <Button className="mt-3">Sign in with Google</Button>
+                {email ? (
+                  <Button className="mt-3" variant="outline" onClick={handleSignOut}>
+                    Sign out
+                  </Button>
+                ) : (
+                  <Button className="mt-3" onClick={handleSignIn}>
+                    Sign in with Google
+                  </Button>
+                )}
               </div>
             </SheetContent>
           </Sheet>
