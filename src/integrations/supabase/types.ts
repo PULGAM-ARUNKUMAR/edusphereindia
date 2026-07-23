@@ -14,7 +14,199 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      colleges: {
+        Row: {
+          annual_fee_inr: number | null
+          city: string
+          courses: Json
+          cover_image_url: string | null
+          created_at: string
+          description: string | null
+          established: number | null
+          gallery: Json
+          hostel_available: boolean
+          hostel_fee_inr: number | null
+          id: string
+          latitude: number | null
+          longitude: number | null
+          naac_grade: string | null
+          name: string
+          nirf_rank: number | null
+          short_name: string | null
+          slug: string
+          state: string
+          stream: string
+          type: string | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          annual_fee_inr?: number | null
+          city: string
+          courses?: Json
+          cover_image_url?: string | null
+          created_at?: string
+          description?: string | null
+          established?: number | null
+          gallery?: Json
+          hostel_available?: boolean
+          hostel_fee_inr?: number | null
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+          naac_grade?: string | null
+          name: string
+          nirf_rank?: number | null
+          short_name?: string | null
+          slug: string
+          state: string
+          stream: string
+          type?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          annual_fee_inr?: number | null
+          city?: string
+          courses?: Json
+          cover_image_url?: string | null
+          created_at?: string
+          description?: string | null
+          established?: number | null
+          gallery?: Json
+          hostel_available?: boolean
+          hostel_fee_inr?: number | null
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+          naac_grade?: string | null
+          name?: string
+          nirf_rank?: number | null
+          short_name?: string | null
+          slug?: string
+          state?: string
+          stream?: string
+          type?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      enquiries: {
+        Row: {
+          college_id: string
+          course_interest: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          message: string | null
+          phone: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          college_id: string
+          course_interest?: string | null
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          message?: string | null
+          phone: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          college_id?: string
+          course_interest?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          message?: string | null
+          phone?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "enquiries_college_id_fkey"
+            columns: ["college_id"]
+            isOneToOne: false
+            referencedRelation: "colleges"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          city: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          preferred_stream: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          city?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          phone?: string | null
+          preferred_stream?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          city?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          preferred_stream?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      saved_colleges: {
+        Row: {
+          college_id: string
+          created_at: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          college_id: string
+          created_at?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          college_id?: string
+          created_at?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "saved_colleges_college_id_fkey"
+            columns: ["college_id"]
+            isOneToOne: false
+            referencedRelation: "colleges"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
