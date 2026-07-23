@@ -27,7 +27,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { getCollegeBySlug, formatINR } from "@/lib/colleges-data";
+import { getCollegeBySlug, formatINR, type College } from "@/lib/colleges-data";
 import { NirfBadge, NaacBadge } from "@/components/nirf-badge";
 import { EnquiryDialog } from "@/components/enquiry-dialog";
 import { AppShell } from "@/components/app-shell";
@@ -75,7 +75,7 @@ function NotFoundCollege() {
 }
 
 function CollegeDetail() {
-  const { college } = Route.useLoaderData();
+  const { college } = Route.useLoaderData() as { college: College };
 
   return (
     <AppShell>
