@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { GraduationCap, Search, Menu } from "lucide-react";
+import { GraduationCap, Search, Menu, Apple } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { lovable } from "@/integrations/lovable";
 import { supabase } from "@/integrations/supabase/client";
@@ -33,8 +33,8 @@ export function SiteHeader() {
     return () => sub.subscription.unsubscribe();
   }, []);
 
-  const handleSignIn = async () => {
-    const result = await lovable.auth.signInWithOAuth("google", {
+  const handleSignIn = async (provider: "google" | "apple") => {
+    const result = await lovable.auth.signInWithOAuth(provider, {
       redirect_uri: window.location.origin,
     });
     if (result.error) {
@@ -78,9 +78,20 @@ export function SiteHeader() {
               Sign out
             </Button>
           ) : (
-            <Button size="sm" className="ml-2" onClick={handleSignIn}>
-              Sign in with Google
-            </Button>
+            <>
+              <Button size="sm" className="ml-2" onClick={() => handleSignIn("google")}>
+                Sign in with Google
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                className="ml-2 gap-1"
+                onClick={() => handleSignIn("apple")}
+              >
+                <Apple className="h-4 w-4" />
+                Sign in with Apple
+              </Button>
+            </>
           )}
         </nav>
 
@@ -117,9 +128,19 @@ export function SiteHeader() {
                     Sign out
                   </Button>
                 ) : (
-                  <Button className="mt-3" onClick={handleSignIn}>
-                    Sign in with Google
-                  </Button>
+                  <>
+                    <Button className="mt-3" onClick={() => handleSignIn("google")}>
+                      Sign in with Google
+                    </Button>
+                    <Button
+                      className="mt-2 gap-1"
+                      variant="outline"
+                      onClick={() => handleSignIn("apple")}
+                    >
+                      <Apple className="h-4 w-4" />
+                      Sign in with Apple
+                    </Button>
+                  </>
                 )}
               </div>
             </SheetContent>
