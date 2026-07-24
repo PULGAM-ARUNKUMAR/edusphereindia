@@ -33,11 +33,11 @@ export const Route = createFileRoute("/")({
         content:
           "Search, compare and connect with top NIRF-ranked colleges across India for B.Tech, MBA, MCA, Medicine, BBA, BA and PhD.",
       },
-      { property: "og:title", content: "EduSphere India — Find Your Dream College" },
+      { property: "og:title", content: "EduSphere India — Find Your Dream College in India" },
       {
         property: "og:description",
         content:
-          "Verified NIRF rankings, real fees, hostel details and direct college connect — all in one place.",
+          "Search, compare and connect with top NIRF-ranked colleges across India for B.Tech, MBA, MCA, Medicine, BBA, BA and PhD.",
       },
     ],
   }),

@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "EduSphere India — Find Your Dream College in India" },
+      { name: "description", content: "Search, compare and connect with top NIRF-ranked colleges across India for B.Tech, MBA, MCA, Medicine, BBA, BA and PhD." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "EduSphere India — Find Your Dream College in India" },
+      { property: "og:description", content: "Search, compare and connect with top NIRF-ranked colleges across India for B.Tech, MBA, MCA, Medicine, BBA, BA and PhD." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "EduSphere India — Find Your Dream College in India" },
+      { name: "twitter:description", content: "Search, compare and connect with top NIRF-ranked colleges across India for B.Tech, MBA, MCA, Medicine, BBA, BA and PhD." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/76e8c065-3aef-48f2-b969-2c43833c05c4" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/76e8c065-3aef-48f2-b969-2c43833c05c4" },
     ],
     links: [
       {
