@@ -31,6 +31,9 @@ import { getCollegeBySlug, formatINR, type College } from "@/lib/colleges-data";
 import { NirfBadge, NaacBadge } from "@/components/nirf-badge";
 import { EnquiryDialog } from "@/components/enquiry-dialog";
 import { AppShell } from "@/components/app-shell";
+import { RouteMap } from "@/components/route-map";
+import { Progress } from "@/components/ui/progress";
+import { Briefcase, TrendingUp as TrendUpIcon, Trophy, Navigation } from "lucide-react";
 
 export const Route = createFileRoute("/college/$slug")({
   loader: ({ params }) => {
@@ -117,9 +120,11 @@ function CollegeDetail() {
               <TabsList className="w-full justify-start overflow-x-auto">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
                 <TabsTrigger value="courses">Courses & Fees</TabsTrigger>
+                <TabsTrigger value="placements">Placements</TabsTrigger>
                 <TabsTrigger value="hostel">Hostel</TabsTrigger>
                 <TabsTrigger value="gallery">Gallery</TabsTrigger>
                 <TabsTrigger value="location">Location</TabsTrigger>
+                <TabsTrigger value="route">Route</TabsTrigger>
               </TabsList>
 
               <TabsContent value="overview" className="mt-5 space-y-6">
@@ -161,6 +166,85 @@ function CollegeDetail() {
                     ))}
                   </TableBody>
                 </Table>
+              </TabsContent>
+
+              <TabsContent value="placements" className="mt-5 space-y-6">
+                <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                  <Stat
+                    icon={Trophy}
+                    label="Highest package"
+                    value={`₹${college.placements.highestPackageLpa} LPA`}
+                  />
+                  <Stat
+                    icon={TrendUpIcon}
+                    label="Median package"
+                    value={`₹${college.placements.medianPackageLpa} LPA`}
+                  />
+                  <Stat
+                    icon={Briefcase}
+                    label="Placement rate"
+                    value={`${college.placementRate}%`}
+                  />
+                  <Stat
+                    icon={Users}
+                    label="Avg package"
+                    value={`₹${college.avgPackageLpa} LPA`}
+                  />
+                </div>
+
+                <div>
+                  <h3 className="mb-3 text-sm font-semibold uppercase text-muted-foreground">
+                    Top recruiters
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {college.placements.topRecruiters.map((r) => (
+                      <Badge key={r} variant="secondary" className="font-normal">
+                        {r}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="mb-3 text-sm font-semibold uppercase text-muted-foreground">
+                    Year-wise trend
+                  </h3>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Year</TableHead>
+                        <TableHead>Avg package</TableHead>
+                        <TableHead className="text-right">Placement rate</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {college.placements.trend.map((t) => (
+                        <TableRow key={t.year}>
+                          <TableCell className="font-medium">{t.year}</TableCell>
+                          <TableCell>₹{t.avgLpa} LPA</TableCell>
+                          <TableCell className="text-right">{t.placementRate}%</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+
+                <div>
+                  <h3 className="mb-3 text-sm font-semibold uppercase text-muted-foreground">
+                    Sector split
+                  </h3>
+                  <div className="space-y-3">
+                    {college.placements.sectorSplit.map((s) => (
+                      <div key={s.sector}>
+                        <div className="mb-1 flex justify-between text-sm">
+                          <span>{s.sector}</span>
+                          <span className="text-muted-foreground">{s.percent}%</span>
+                        </div>
+                        <Progress value={s.percent} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </TabsContent>
 
               <TabsContent value="hostel" className="mt-5">
@@ -219,6 +303,14 @@ function CollegeDetail() {
                     loading="lazy"
                   />
                 </div>
+              </TabsContent>
+
+              <TabsContent value="route" className="mt-5">
+                <div className="mb-3 flex items-center gap-2 text-sm text-muted-foreground">
+                  <Navigation className="h-4 w-4" />
+                  Shortest route from your location
+                </div>
+                <RouteMap destination={college.address} name={college.name} />
               </TabsContent>
             </Tabs>
           </div>
