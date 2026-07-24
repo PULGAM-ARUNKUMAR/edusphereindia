@@ -18,6 +18,13 @@ export type College = {
   avgPackageLpa: number;
   description: string;
   address: string;
+  placements: {
+    highestPackageLpa: number;
+    medianPackageLpa: number;
+    topRecruiters: string[];
+    trend: { year: number; avgLpa: number; placementRate: number }[];
+    sectorSplit: { sector: string; percent: number }[];
+  };
 };
 
 export const COURSES = [
