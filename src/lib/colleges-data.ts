@@ -75,6 +75,23 @@ export const colleges: College[] = [
     description:
       "The Indian Institute of Technology Bombay is a premier public technical university located in Powai, Mumbai. Renowned worldwide for engineering, research, and entrepreneurship, IITB consistently ranks among India's top institutions.",
     address: "Powai, Mumbai, Maharashtra 400076",
+    placements: {
+      highestPackageLpa: 320,
+      medianPackageLpa: 21.5,
+      topRecruiters: ["Google", "Microsoft", "Goldman Sachs", "Uber", "Apple", "McKinsey"],
+      trend: [
+        { year: 2021, avgLpa: 17.9, placementRate: 88 },
+        { year: 2022, avgLpa: 19.4, placementRate: 90 },
+        { year: 2023, avgLpa: 21.8, placementRate: 92 },
+        { year: 2024, avgLpa: 23.1, placementRate: 93 },
+      ],
+      sectorSplit: [
+        { sector: "Software / Product", percent: 46 },
+        { sector: "Finance & Consulting", percent: 22 },
+        { sector: "Core Engineering", percent: 18 },
+        { sector: "Research / Higher Studies", percent: 14 },
+      ],
+    },
   },
   {
     id: "2",
@@ -106,6 +123,23 @@ export const colleges: College[] = [
     description:
       "IIM Ahmedabad is India's most prestigious business school, consistently ranked #1 by NIRF. Its flagship PGP program produces India's top business leaders across sectors.",
     address: "Vastrapur, Ahmedabad, Gujarat 380015",
+    placements: {
+      highestPackageLpa: 115,
+      medianPackageLpa: 33,
+      topRecruiters: ["McKinsey", "BCG", "Bain", "Goldman Sachs", "JP Morgan", "Amazon"],
+      trend: [
+        { year: 2021, avgLpa: 28.5, placementRate: 100 },
+        { year: 2022, avgLpa: 31.2, placementRate: 100 },
+        { year: 2023, avgLpa: 34.5, placementRate: 100 },
+        { year: 2024, avgLpa: 35.8, placementRate: 100 },
+      ],
+      sectorSplit: [
+        { sector: "Consulting", percent: 38 },
+        { sector: "Finance", percent: 28 },
+        { sector: "Product / Tech", percent: 20 },
+        { sector: "General Management", percent: 14 },
+      ],
+    },
   },
   {
     id: "3",
@@ -137,6 +171,23 @@ export const colleges: College[] = [
     description:
       "The All India Institute of Medical Sciences, New Delhi is India's foremost public medical college and hospital. MBBS at AIIMS remains the most sought-after medical degree in India.",
     address: "Ansari Nagar, New Delhi 110029",
+    placements: {
+      highestPackageLpa: 24,
+      medianPackageLpa: 12,
+      topRecruiters: ["AIIMS Hospitals", "Apollo", "Fortis", "Max Healthcare", "WHO", "ICMR"],
+      trend: [
+        { year: 2021, avgLpa: 10.5, placementRate: 100 },
+        { year: 2022, avgLpa: 11.2, placementRate: 100 },
+        { year: 2023, avgLpa: 12.0, placementRate: 100 },
+        { year: 2024, avgLpa: 12.8, placementRate: 100 },
+      ],
+      sectorSplit: [
+        { sector: "Clinical Practice", percent: 55 },
+        { sector: "PG / Super-specialty", percent: 30 },
+        { sector: "Research", percent: 10 },
+        { sector: "Public Health", percent: 5 },
+      ],
+    },
   },
   {
     id: "4",
@@ -166,6 +217,23 @@ export const colleges: College[] = [
     description:
       "St. Xavier's College, Mumbai is an autonomous arts, science, and commerce institution known for its academic excellence and rich Jesuit heritage since 1869.",
     address: "5 Mahapalika Marg, Mumbai, Maharashtra 400001",
+    placements: {
+      highestPackageLpa: 18,
+      medianPackageLpa: 6.2,
+      topRecruiters: ["Deloitte", "KPMG", "EY", "TCS", "HDFC Bank", "Times Group"],
+      trend: [
+        { year: 2021, avgLpa: 5.2, placementRate: 72 },
+        { year: 2022, avgLpa: 5.8, placementRate: 75 },
+        { year: 2023, avgLpa: 6.5, placementRate: 78 },
+        { year: 2024, avgLpa: 7.0, placementRate: 80 },
+      ],
+      sectorSplit: [
+        { sector: "BFSI", percent: 32 },
+        { sector: "Media & Comms", percent: 24 },
+        { sector: "Consulting", percent: 22 },
+        { sector: "Higher Studies", percent: 22 },
+      ],
+    },
   },
   {
     id: "5",
@@ -197,6 +265,23 @@ export const colleges: College[] = [
     description:
       "Christ (Deemed to be University), Bengaluru is a private university offering holistic education across disciplines with a strong industry-academia interface.",
     address: "Hosur Rd, Bengaluru, Karnataka 560029",
+    placements: {
+      highestPackageLpa: 42,
+      medianPackageLpa: 7.5,
+      topRecruiters: ["Accenture", "Cognizant", "Infosys", "Deloitte", "Amazon", "Wipro"],
+      trend: [
+        { year: 2021, avgLpa: 6.4, placementRate: 82 },
+        { year: 2022, avgLpa: 7.1, placementRate: 85 },
+        { year: 2023, avgLpa: 7.8, placementRate: 88 },
+        { year: 2024, avgLpa: 8.4, placementRate: 90 },
+      ],
+      sectorSplit: [
+        { sector: "IT Services", percent: 40 },
+        { sector: "Consulting & BFSI", percent: 28 },
+        { sector: "Product / Startups", percent: 20 },
+        { sector: "Higher Studies", percent: 12 },
+      ],
+    },
   },
   {
     id: "6",
@@ -228,6 +313,23 @@ export const colleges: College[] = [
     description:
       "VIT Vellore is a private research university offering globally benchmarked undergraduate and postgraduate programs in engineering, sciences, and management.",
     address: "Katpadi, Vellore, Tamil Nadu 632014",
+    placements: {
+      highestPackageLpa: 101,
+      medianPackageLpa: 8.5,
+      topRecruiters: ["Amazon", "Microsoft", "Cisco", "TCS", "Deloitte", "Cognizant"],
+      trend: [
+        { year: 2021, avgLpa: 7.6, placementRate: 85 },
+        { year: 2022, avgLpa: 8.4, placementRate: 88 },
+        { year: 2023, avgLpa: 9.2, placementRate: 90 },
+        { year: 2024, avgLpa: 9.8, placementRate: 91 },
+      ],
+      sectorSplit: [
+        { sector: "Software / Product", percent: 52 },
+        { sector: "IT Services", percent: 24 },
+        { sector: "Core Engineering", percent: 14 },
+        { sector: "Higher Studies", percent: 10 },
+      ],
+    },
   },
 ];
 
