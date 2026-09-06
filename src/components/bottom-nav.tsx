@@ -11,16 +11,16 @@ const items = [
 export function BottomNav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 border-t bg-background/95 backdrop-blur md:hidden">
-      <ul className="mx-auto flex max-w-md items-stretch justify-around">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 border-t bg-background/95 backdrop-blur">
+      <ul className="mx-auto flex max-w-md items-stretch justify-around md:max-w-2xl md:gap-2 md:py-1">
         {items.map(({ to, label, icon: Icon }) => {
           const active = pathname === to || (to !== "/" && pathname.startsWith(to));
           return (
             <li key={to} className="flex-1">
               <Link
                 to={to}
-                className={`flex flex-col items-center gap-1 py-2.5 text-xs ${
-                  active ? "text-primary" : "text-muted-foreground"
+                className={`flex flex-col items-center gap-1 py-2.5 text-xs md:flex-row md:justify-center md:gap-2 md:rounded-full md:py-2 md:text-sm md:hover:bg-muted ${
+                  active ? "text-primary md:bg-primary/10" : "text-muted-foreground"
                 }`}
               >
                 <Icon className={`h-5 w-5 ${active ? "stroke-[2.5]" : ""}`} />
