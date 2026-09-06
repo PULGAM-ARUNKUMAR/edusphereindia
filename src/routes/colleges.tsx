@@ -24,6 +24,7 @@ import {
 import { colleges, COURSES, formatINR } from "@/lib/colleges-data";
 import { CollegeCard } from "@/components/college-card";
 import { AppShell } from "@/components/app-shell";
+import { NearbyColleges } from "@/components/nearby-colleges";
 
 export const Route = createFileRoute("/colleges")({
   head: () => ({
@@ -235,6 +236,10 @@ function CollegesPage() {
               </button>
             </div>
           </div>
+        </div>
+
+        <div className="mb-6">
+          <NearbyColleges limit={4} />
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[280px_1fr]">

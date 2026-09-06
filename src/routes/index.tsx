@@ -23,6 +23,7 @@ import { Input } from "@/components/ui/input";
 import { AppShell } from "@/components/app-shell";
 import { CollegeCard } from "@/components/college-card";
 import { colleges } from "@/lib/colleges-data";
+import { NearbyColleges } from "@/components/nearby-colleges";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -121,6 +122,10 @@ function LandingPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pt-10">
+        <NearbyColleges limit={5} />
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-12">
